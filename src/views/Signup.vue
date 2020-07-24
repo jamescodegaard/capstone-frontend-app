@@ -42,8 +42,8 @@
         <input type="text" class="form-control" v-model="description">
       </div>
       <div class="form-group">
-        <span>Hours:</span>
-        <textarea v-model="hours" placeholder="M-F: 10AM-8PM, Sat: 10AM-5PM, Sun: 12PM-5PM"></textarea>
+        <label>Hours:</label>
+        <textarea v-model="hours" placeholder="M-F: 10AM-8PM"></textarea>
       </div>
       <div class="form-group">
         <label>Image URL:</label> 
@@ -81,9 +81,16 @@ export default {
         email: this.email,
         password: this.password,
         password_confirmation: this.passwordConfirmation,
+        address: this.address,
+        phone: this.phone,
+        website: this.website,
+        category: this.category,
+        description: this.description,
+        hours: this.hours,
+        image: this.image,
       };
       axios
-        .post("/api/users", params)
+        .post("/api/businesses", params)
         .then((response) => {
           this.$router.push("/login");
         })
