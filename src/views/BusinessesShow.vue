@@ -8,6 +8,7 @@
     <p>Description: {{ business.description }}</p>
     <p>Website: {{ business.website }}</p>
     <p>Hours: {{ business.hours }}</p>
+    <router-link :to="`/businesses/${business.id}/edit`">Update Business</router-link>
   </div>
 </template>
 
@@ -24,7 +25,6 @@ export default {
   },
   created: function () {
     axios.get(`/api/businesses/${this.$route.params.id}`).then((response) => {
-      console.log(response.data);
       this.business = response.data;
     });
   },

@@ -7,6 +7,7 @@ import Login from '../views/Login.vue';
 import Logout from '../views/Logout.vue';
 import BusinessesIndex from '../views/BusinessesIndex.vue';
 import BusinessesShow from '../views/BusinessesShow.vue';
+import BusinessesEdit from '../views/BusinessesEdit.vue';
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/businesses/:id',
     name: 'businesses-show',
     component: BusinessesShow
+  },
+  {
+    path: '/businesses/:id/edit',
+    name: 'businesses-edit',
+    component: BusinessesEdit
   }
 ];
 
