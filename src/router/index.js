@@ -5,6 +5,7 @@ import About from '../views/About.vue';
 import Signup from '../views/Signup.vue';
 import Login from '../views/Login.vue';
 import Logout from '../views/Logout.vue';
+import BusinessesIndex from '../views/BusinessesIndex.vue';
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/logout',
     name: 'logout',
     component: Logout
+  },
+  {
+    path: '/businesses',
+    name: 'businesses-index',
+    component: BusinessesIndex
   }
 ];
 
