@@ -41,7 +41,8 @@
         <label>Image URL:</label> 
         <input type="text" class="form-control" v-model="business.image">
       </div>
-      <input type="submit" class="btn btn-primary" value="Submit">
+      <input type="submit" class="btn btn-primary" value="Update">
+      <input type="button" class="btn btn-primary" value="Delete" v-on:click="destroyBusiness(business)">
     </form>
   </div>
 </template>
@@ -87,6 +88,12 @@ export default {
           this.errors = error.response.data.errors;
           console.log(this.errors);
         });
+    },
+    destroyBusiness: function (business) {
+      axios.delete(`/api/businesses/${business.id}`).then((response) => {
+        console.log("Business successfully destroyed!");
+        this.$router.push("/");
+      });
     },
   },
 };
