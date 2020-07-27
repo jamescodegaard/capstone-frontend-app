@@ -3,6 +3,7 @@
     <img :src="event.image" :alt="event.name">
     <h3>{{ event.name }}</h3>
     <p>{{ event.date }} </p>
+    <p>{{ event.time }} </p>
     <h3>Location</h3>
     <p>{{ business.name }}</p>
     <p>{{ business.address }}</p>
