@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/businesses">Businesses</router-link>
+      <router-link to="/events">Events</router-link>
       <router-link to="/signup">Signup</router-link>
       <router-link to="/login">Login</router-link>
       <router-link to="/logout">Logout</router-link>
@@ -34,3 +35,20 @@
   color: #42b983;
 }
 </style>
+
+<script>
+export default {
+  data: function () {
+    return {};
+  },
+  created: function () {},
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+    getBusinessId: function () {
+      return localStorage.getItem("business_id");
+    },
+  },
+};
+</script>

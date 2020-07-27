@@ -8,6 +8,9 @@ import Logout from '../views/Logout.vue';
 import BusinessesIndex from '../views/BusinessesIndex.vue';
 import BusinessesShow from '../views/BusinessesShow.vue';
 import BusinessesEdit from '../views/BusinessesEdit.vue';
+import EventsIndex from '../views/EventsIndex.vue';
+import EventsShow from '../views/EventsShow.vue';
+import EventsEdit from '../views/EventsEdit.vue';
 
 Vue.use(VueRouter);
 
@@ -51,6 +54,21 @@ const routes = [
     path: '/businesses/:id/edit',
     name: 'businesses-edit',
     component: BusinessesEdit
+  },
+  {
+    path: '/events',
+    name: 'events-index',
+    component: EventsIndex
+  },
+  {
+    path: '/events/:id',
+    name: 'events-show',
+    component: EventsShow
+  },
+  {
+    path: '/events/:id/edit',
+    name: 'events-edit',
+    component: EventsEdit
   }
 ];
 
