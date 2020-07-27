@@ -20,6 +20,7 @@
         <p>Contact: {{ event.alt_contact }} </p>
         <p>Email: {{ event.alt_email }} </p>
         <router-link :to="`/events/${event.id}/edit`">Edit Event</router-link>
+        <router-link :to="`/events/new`">New Event</router-link>
       </div>
     </div>
   </div>

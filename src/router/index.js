@@ -9,6 +9,7 @@ import BusinessesIndex from '../views/BusinessesIndex.vue';
 import BusinessesShow from '../views/BusinessesShow.vue';
 import BusinessesEdit from '../views/BusinessesEdit.vue';
 import EventsIndex from '../views/EventsIndex.vue';
+import EventsNew from '../views/EventsNew.vue';
 import EventsShow from '../views/EventsShow.vue';
 import EventsEdit from '../views/EventsEdit.vue';
 
@@ -59,6 +60,11 @@ const routes = [
     path: '/events',
     name: 'events-index',
     component: EventsIndex
+  },
+  {
+    path: '/events/new',
+    name: 'events-new',
+    component: EventsNew
   },
   {
     path: '/events/:id',

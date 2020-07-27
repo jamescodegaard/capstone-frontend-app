@@ -10,6 +10,10 @@
     <p>Email: {{ event.alt_email }} </p>
     <h4>Description</h4>
     <p>{{ event.description }} </p>
+    <p>Event Tags:</p>
+    <div v-for="tag in event.tags">
+      <p>{{ tag.name }}</p>
+    </div>
     <router-link :to="`/events/${event.id}/edit`">Edit Event</router-link>
   </div>
 </template>
