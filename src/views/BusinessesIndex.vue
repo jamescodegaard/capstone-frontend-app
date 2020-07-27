@@ -39,8 +39,8 @@ export default {
     var map = new mapboxgl.Map({
       container: "map", // container id
       style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
-      center: [-91.6656, 41.9779], // starting position [lng, lat]
-      zoom: 9, // starting zoom
+      center: [-91.7857, 43.3033], // starting position [lng, lat]
+      zoom: 13, // starting zoom
     });
   },
   methods: {},
