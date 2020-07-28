@@ -4,7 +4,7 @@
     <div v-for="event in events">
       <h3>{{ event.name }}</h3>
       <img :src="event.image" :alt="event.name">
-      <p>Date: {{ event.date }}</p>
+      <p>{{ event.formatted_date }} | {{ event.formatted_time }}</p>
       <p>Description: {{ event.description }}</p>
       <router-link :to="`/events/${event.id}`">More Info</router-link>
     </div>

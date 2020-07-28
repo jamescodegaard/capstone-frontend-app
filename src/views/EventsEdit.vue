@@ -10,8 +10,12 @@
         <input type="text" class="form-control" v-model="event.name">
       </div>
       <div class="form-group">
-        <label>Date/Time:</label> 
+        <label>Date:</label> 
         <input type="date" class="form-control" v-model="event.date">
+      </div>
+      <div class="form-group">
+        <label>Time:</label> 
+        <input type="time" class="form-control" v-model="event.date">
       </div>
       <div class="form-group">
         <label>Description:</label> 
@@ -68,9 +72,10 @@ export default {
   },
   methods: {
     editEvent: function (event) {
+      var datetime = `${this.event.date} ${this.event.time}`;
       var params = {
         name: event.name,
-        date: event.date,
+        date: datetime,
         alt_contact: event.alt_contact,
         alt_email: event.alt_email,
         description: event.description,

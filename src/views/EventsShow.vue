@@ -2,8 +2,8 @@
   <div class="events-show">
     <img :src="event.image" :alt="event.name">
     <h3>{{ event.name }}</h3>
-    <p>{{ event.date }} </p>
-    <p>{{ event.time }} </p>
+    <p>{{ event.formatted_date }} </p>
+    <p>{{ event.formatted_time }} </p>
     <h3>Location</h3>
     <p>{{ business.name }}</p>
     <p>{{ business.address }}</p>
