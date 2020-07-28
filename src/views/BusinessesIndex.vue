@@ -29,18 +29,24 @@ export default {
       businesses: [],
     };
   },
-  mounted: function () {
+  created: function () {
     axios.get("/api/businesses").then((response) => {
       console.log(response.data);
       this.businesses = response.data;
     });
-
+  },
+  mounted: function () {
     mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_WEB_TOKEN;
     var map = new mapboxgl.Map({
       container: "map", // container id
       style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
       center: [-91.7857, 43.3033], // starting position [lng, lat]
       zoom: 13, // starting zoom
+    });
+    this.businesses.forEach((business) => {
+      var marker = new mapboxgl.Marker()
+        .setLngLat([business.longitude, business.latitude])
+        .addTo(map); // add the marker to the map
     });
   },
   methods: {},
