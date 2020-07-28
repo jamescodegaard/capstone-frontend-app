@@ -43,10 +43,12 @@ export default {
       center: [-91.7857, 43.3033], // starting position [lng, lat]
       zoom: 13, // starting zoom
     });
-    this.businesses.forEach((business) => {
-      var marker = new mapboxgl.Marker()
-        .setLngLat([business.longitude, business.latitude])
-        .addTo(map); // add the marker to the map
+    map.on("load", () => {
+      this.businesses.forEach((business) => {
+        var marker = new mapboxgl.Marker()
+          .setLngLat([business.longitude, business.latitude])
+          .addTo(map); // add the marker to the map
+      });
     });
   },
   methods: {},
