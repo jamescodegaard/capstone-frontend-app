@@ -9,7 +9,7 @@
       <p>Description: {{ business.description }}</p>
       <p>Website: {{ business.website }}</p>
       <p>Hours: {{ business.hours }}</p>
-      <router-link :to="`/businesses/${business.id}/edit`">Edit Business</router-link>
+      <router-link :to="`/businesses/${this.business.id}/edit`">Edit Business</router-link>
     </div>
     <div> <!-- business events index-->
     <h2>Events:</h2>
