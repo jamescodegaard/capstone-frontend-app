@@ -11,12 +11,36 @@
       </div>
       <div class="form-group">
         <label>Date:</label> 
-        <input type="date" class="form-control" v-model="event.date">
+        <datetime 
+          type="datetime" 
+          v-model="dateTime"
+          input-class="datetime"
+          zone="America/New_York"
+          :format="{ 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric', 
+          hour: 'numeric', 
+          minute: '2-digit', 
+          timeZoneName: 'short' 
+          }"
+          :phrases="{ok: 'Continue', cancel: 'Exit'}"
+          :hour-step="1"
+          :minute-step="15"
+          :week-start="7"
+          use12-hour
+          auto
+          >
+        </datetime>
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
+        <label>Date:</label> 
+        <input type="date" class="form-control" v-model="event.date">
+      </div> -->
+      <!-- <div class="form-group">
         <label>Time:</label> 
         <input type="time" class="form-control" v-model="event.date">
-      </div>
+      </div> -->
       <div class="form-group">
         <label>Description:</label> 
         <input type="text" class="form-control" v-model="event.description">
@@ -51,6 +75,9 @@
 
 <script>
 import axios from "axios";
+import { Datetime } from "vue-datetime";
+import "vue-datetime/dist/vue-datetime.css";
+
 export default {
   data: function () {
     return {
@@ -58,12 +85,14 @@ export default {
       errors: [],
       tagsIndex: [],
       checkedTags: [],
+      dateTime: "",
     };
   },
   created: function () {
     axios.get(`/api/events/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.event = response.data;
+      this.dateTime = response.data.date;
     });
     axios.get(`/api/tags`).then((response) => {
       console.log(response.data);
@@ -72,10 +101,9 @@ export default {
   },
   methods: {
     editEvent: function (event) {
-      var datetime = `${this.event.date} ${this.event.time}`;
       var params = {
         name: event.name,
-        date: datetime,
+        date: this.dateTime,
         alt_contact: event.alt_contact,
         alt_email: event.alt_email,
         description: event.description,

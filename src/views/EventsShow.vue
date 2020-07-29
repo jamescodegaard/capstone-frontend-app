@@ -33,7 +33,6 @@ export default {
   },
   created: function () {
     axios.get(`/api/events/${this.$route.params.id}`).then((response) => {
-      console.log(response.data);
       this.event = response.data;
       this.business = response.data.business;
     });

@@ -2,6 +2,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import axios from "axios";
+import { Datetime } from 'vue-datetime';
+import 'vue-datetime/dist/vue-datetime.css';
 
 axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
 
@@ -12,7 +14,11 @@ if (jwt) {
 
 Vue.config.productionTip = false;
 
+Vue.use(Datetime);
+Vue.component('datetime', Datetime);
+
 new Vue({
   router,
   render: h => h(App)
 }).$mount('#app');
+
