@@ -45,8 +45,10 @@ export default {
     });
     map.on("load", () => {
       this.businesses.forEach((business) => {
+        var popup = new mapboxgl.Popup({ offset: 25 }).setText(business.name);
         var marker = new mapboxgl.Marker()
           .setLngLat([business.longitude, business.latitude])
+          .setPopup(popup)
           .addTo(map); // add the marker to the map
       });
     });
