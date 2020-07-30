@@ -14,7 +14,7 @@
         <datetime 
           type="datetime" 
           v-model="dateTime"
-          input-class="datetime"
+          input="datetime"
           value-zone="local"
           zone="local"
           :format="{ 
@@ -34,14 +34,6 @@
           >
         </datetime>
       </div>
-      <!-- <div class="form-group">
-        <label>Date:</label> 
-        <input type="date" class="form-control" v-model="event.date">
-      </div> -->
-      <!-- <div class="form-group">
-        <label>Time:</label> 
-        <input type="time" class="form-control" v-model="event.date">
-      </div> -->
       <div class="form-group">
         <label>Description:</label> 
         <input type="text" class="form-control" v-model="event.description">
@@ -60,7 +52,7 @@
       </div>
       <div class="form-group">
         <div v-for="tag in tagsIndex">
-          <input type="checkbox" :value="tag.id" v-model="checkedTags">
+          <input type="checkbox" :value="tag.id" v-model="checkedTagIds">
           <label :for="tag.id">{{ tag.name }}</label>
         </div>
       </div>
@@ -76,8 +68,12 @@
 
 <script>
 import axios from "axios";
-import { Datetime } from "vue-datetime";
+import Vue from "vue";
+import Datetime from "vue-datetime";
+// You need a specific loader for CSS files
 import "vue-datetime/dist/vue-datetime.css";
+
+Vue.use(Datetime);
 
 export default {
   data: function () {
@@ -85,7 +81,7 @@ export default {
       event: [],
       errors: [],
       tagsIndex: [],
-      checkedTags: [],
+      checkedTagIds: [],
       dateTime: "",
     };
   },
@@ -94,6 +90,7 @@ export default {
       console.log(response.data);
       this.event = response.data;
       this.dateTime = response.data.date;
+      this.checkedTagIds = response.data.tags.map((tag) => tag.id);
     });
     axios.get(`/api/tags`).then((response) => {
       console.log(response.data);
@@ -109,7 +106,7 @@ export default {
         alt_email: event.alt_email,
         description: event.description,
         image: event.image,
-        tag_ids: this.checkedTags,
+        tag_ids: this.checkedTagIds,
       };
       axios
         .patch(`/api/events/${this.event.id}`, params)

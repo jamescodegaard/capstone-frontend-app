@@ -31,7 +31,7 @@
       </div>
       <div class="form-group">
         <div v-for="tag in tagsIndex">
-          <input type="checkbox" :value="tag.id" v-model="checkedTags">
+          <input type="checkbox" :value="tag.id" v-model="checkedTagIds">
           <label :for="tag.id">{{ tag.name }}</label>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default {
     return {
       errors: [],
       tagsIndex: [],
-      checkedTags: [],
+      checkedTagIds: [],
       name: "",
       date: "",
       alt_contact: "",
@@ -75,7 +75,7 @@ export default {
         alt_email: this.alt_email,
         description: this.description,
         image: this.image,
-        tag_ids: this.checkedTags,
+        tag_ids: this.checkedTagIds,
       };
       axios
         .post(`/api/events/`, params)
