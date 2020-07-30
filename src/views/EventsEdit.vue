@@ -15,7 +15,8 @@
           type="datetime" 
           v-model="dateTime"
           input-class="datetime"
-          zone="America/New_York"
+          value-zone="local"
+          zone="local"
           :format="{ 
           year: 'numeric', 
           month: 'long', 
