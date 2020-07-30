@@ -15,7 +15,7 @@
     <h2>Events:</h2>
       <div v-for="event in events"> 
         <h3>{{ event.name }}</h3>
-        <p>{{ event.date }} </p>
+        <p>{{ event.date }}</p>
         <p>{{ event.description }} </p>
         <p>Contact: {{ event.alt_contact }} </p>
         <p>Email: {{ event.alt_email }} </p>

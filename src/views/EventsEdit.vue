@@ -53,7 +53,7 @@
       <div class="form-group">
         <div v-for="tag in tagsIndex">
           <input type="checkbox" :value="tag.id" v-model="checkedTagIds">
-          <label :for="tag.id">{{ tag.name }}</label>
+          <label :for="tag.id">#{{ tag.name }}</label>
         </div>
       </div>
       

@@ -10,8 +10,29 @@
         <input type="text" class="form-control" v-model="name">
       </div>
       <div class="form-group">
-        <label>Date/Time:</label> 
-        <input type="date" class="form-control" v-model="date">
+        <label>Date:</label>
+        <datetime 
+          type="datetime" 
+          v-model="date"
+          input="datetimeEmpty"
+          value-zone="local"
+          zone="local"
+          :format="{ 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric', 
+          hour: 'numeric', 
+          minute: '2-digit', 
+          timeZoneName: 'short' 
+          }"
+          :phrases="{ok: 'Continue', cancel: 'Exit'}"
+          :hour-step="1"
+          :minute-step="15"
+          :week-start="7"
+          use12-hour
+          auto
+          >
+        </datetime>
       </div>
       <div class="form-group">
         <label>Description:</label> 
@@ -32,7 +53,7 @@
       <div class="form-group">
         <div v-for="tag in tagsIndex">
           <input type="checkbox" :value="tag.id" v-model="checkedTagIds">
-          <label :for="tag.id">{{ tag.name }}</label>
+          <label :for="tag.id">#{{ tag.name }}</label>
         </div>
       </div>
       
@@ -46,6 +67,13 @@
 
 <script>
 import axios from "axios";
+import Vue from "vue";
+import Datetime from "vue-datetime";
+// You need a specific loader for CSS files
+import "vue-datetime/dist/vue-datetime.css";
+
+Vue.use(Datetime);
+
 export default {
   data: function () {
     return {
