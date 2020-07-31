@@ -1,7 +1,13 @@
 <template>
   <div class="events-index">
+    
+    <div class="form-group">
+      <input class="form-control" type="text" v-model="eventFilter">
+    </div>
+
+
     <h1>Events:</h1>
-    <div v-for="event in events">
+    <div v-for="event in filterBy(events, eventFilter)">
       <h3>{{ event.name }}</h3>
       <img :src="event.image" :alt="event.name">
       <p>{{ event.formatted_date }} | {{ event.formatted_time }}</p>
@@ -24,10 +30,13 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       events: [],
+      eventFilter: "",
     };
   },
   created: function () {

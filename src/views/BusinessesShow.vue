@@ -9,19 +9,20 @@
       <p>Description: {{ business.description }}</p>
       <p>Website: {{ business.website }}</p>
       <p>Hours: {{ business.hours }}</p>
-      <router-link :to="`/businesses/${this.business.id}/edit`">Edit Business</router-link>
+      <router-link v-if="$parent.getBusinessId() == business.id" :to="`/businesses/${this.business.id}/edit`">Edit Business</router-link>
     </div>
     <div> <!-- business events index-->
     <h2>Events:</h2>
       <div v-for="event in events"> 
         <h3>{{ event.name }}</h3>
-        <p>{{ event.date }}</p>
+        <p>{{ event.formatted_date }}</p>
+        <p>{{ event.formatted_time }}</p>
         <p>{{ event.description }} </p>
         <p>Contact: {{ event.alt_contact }} </p>
         <p>Email: {{ event.alt_email }} </p>
-        <router-link :to="`/events/${event.id}/edit`">Edit Event</router-link>
+        <router-link v-if="$parent.getBusinessId() == business.id" :to="`/events/${event.id}/edit`">Edit Event</router-link>
       </div>
-      <router-link :to="`/events/new`">New Event</router-link>
+      <router-link v-if="$parent.getBusinessId() == business.id" :to="`/events/new`">New Event</router-link>
     </div>
   </div>
 </template>
@@ -31,6 +32,7 @@
 
 <script>
 import axios from "axios";
+
 export default {
   data: function () {
     return {
@@ -45,6 +47,10 @@ export default {
       this.events = response.data.events;
     });
   },
-  methods: {},
+  methods: {
+    // businessOwner: function () {
+    //   $parent.getBusinessId() == this.business.id;
+    // },
+  },
 };
 </script>

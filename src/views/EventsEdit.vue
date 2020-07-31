@@ -13,9 +13,9 @@
         <label>Date:</label> 
         <datetime 
           type="datetime" 
-          v-model="dateTime"
+          v-model="datetime"
           input="datetime"
-          value-zone="local"
+          value-zone="UTC"
           zone="local"
           :format="{ 
           year: 'numeric', 
@@ -68,12 +68,12 @@
 
 <script>
 import axios from "axios";
-import Vue from "vue";
-import Datetime from "vue-datetime";
-// You need a specific loader for CSS files
-import "vue-datetime/dist/vue-datetime.css";
+// import Vue from "vue";
+// import { Datetime } from "vue-datetime";
+// // You need a specific loader for CSS files
+// import "vue-datetime/dist/vue-datetime.css";
 
-Vue.use(Datetime);
+// Vue.component("datetime", Datetime);
 
 export default {
   data: function () {
@@ -82,14 +82,14 @@ export default {
       errors: [],
       tagsIndex: [],
       checkedTagIds: [],
-      dateTime: "",
+      datetime: "",
     };
   },
   created: function () {
     axios.get(`/api/events/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.event = response.data;
-      this.dateTime = response.data.date;
+      this.datetime = response.data.date;
       this.checkedTagIds = response.data.tags.map((tag) => tag.id);
     });
     axios.get(`/api/tags`).then((response) => {
@@ -101,7 +101,7 @@ export default {
     editEvent: function (event) {
       var params = {
         name: event.name,
-        date: this.dateTime,
+        date: this.datetime,
         alt_contact: event.alt_contact,
         alt_email: event.alt_email,
         description: event.description,
