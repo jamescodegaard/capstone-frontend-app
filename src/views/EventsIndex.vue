@@ -51,6 +51,9 @@ export default {
       center: [-91.7857, 43.3033], // starting position [lng, lat]
       zoom: 13, // starting zoom
     });
+    map.setStyle("mapbox://styles/mapbox/dark-v10");
+    var nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, "top-left");
     map.on("load", () => {
       this.events.forEach((event) => {
         var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
