@@ -6,50 +6,60 @@
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
       </ul>
       <div class="form-group">
-        <label>Name:</label> 
-        <input type="text" class="form-control" v-model="name">
+        <label>Name:</label>
+        <input type="text" class="form-control" v-model="name" />
       </div>
       <div class="form-group">
         <label>Email:</label>
-        <input type="email" class="form-control" v-model="email">
+        <input type="email" class="form-control" v-model="email" />
       </div>
       <div class="form-group">
         <label>Password:</label>
-        <input type="password" class="form-control" v-model="password">
+        <input type="password" class="form-control" v-model="password" />
       </div>
       <div class="form-group">
         <label>Password confirmation:</label>
-        <input type="password" class="form-control" v-model="passwordConfirmation">
+        <input
+          type="password"
+          class="form-control"
+          v-model="passwordConfirmation"
+        />
       </div>
       <div class="form-group">
-        <label>Address:</label> 
-        <input type="text" class="form-control" v-model="address">
+        <label>Address:</label>
+        <input type="text" class="form-control" v-model="address" />
       </div>
       <div class="form-group">
-        <label>Phone:</label> 
-        <input type="text" class="form-control" v-model="phone">
+        <label>Phone:</label>
+        <input type="text" class="form-control" v-model="phone" />
       </div>
       <div class="form-group">
-        <label>Website:</label> 
-        <input type="text" class="form-control" v-model="website">
+        <label>Website:</label>
+        <input type="text" class="form-control" v-model="website" />
       </div>
       <div class="form-group">
-        <label>Category:</label> 
-        <input type="text" class="form-control" v-model="category">
+        <label>Category</label>
+        <select class="form-control" v-model="category">
+          <option>Restaurant</option>
+          <option>Bar</option>
+          <option>Coffee Shop</option>
+          <option>Brewery</option>
+          <option>Winery</option>
+        </select>
       </div>
       <div class="form-group">
-        <label>Description:</label> 
-        <input type="text" class="form-control" v-model="description">
+        <label>Description:</label>
+        <input type="text" class="form-control" v-model="description" />
       </div>
       <div class="form-group">
         <label>Hours:</label>
         <textarea v-model="hours" placeholder="M-F: 10AM-8PM"></textarea>
       </div>
       <div class="form-group">
-        <label>Image URL:</label> 
-        <input type="text" class="form-control" v-model="image">
+        <label>Image URL:</label>
+        <input type="text" class="form-control" v-model="image" />
       </div>
-      <input type="submit" class="btn btn-primary" value="Submit">
+      <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>
 </template>
@@ -58,7 +68,7 @@
 import axios from "axios";
 
 export default {
-  data: function () {
+  data: function() {
     return {
       name: "",
       email: "",
@@ -75,7 +85,7 @@ export default {
     };
   },
   methods: {
-    submit: function () {
+    submit: function() {
       var params = {
         name: this.name,
         email: this.email,
