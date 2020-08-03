@@ -47,10 +47,6 @@ export default {
       this.events = response.data.events;
     });
   },
-  methods: {
-    // businessOwner: function () {
-    //   $parent.getBusinessId() == this.business.id;
-    // },
-  },
+  methods: {},
 };
 </script>
