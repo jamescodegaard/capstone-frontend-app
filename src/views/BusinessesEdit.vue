@@ -6,67 +6,82 @@
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
       </ul>
       <div class="form-group">
-        <label>Name:</label> 
-        <input type="text" class="form-control" v-model="business.name">
+        <label>Name:</label>
+        <input type="text" class="form-control" v-model="business.name" />
       </div>
       <div class="form-group">
         <label>Email:</label>
-        <input type="email" class="form-control" v-model="business.email">
+        <input type="email" class="form-control" v-model="business.email" />
       </div>
       <div class="form-group">
-        <label>Address:</label> 
-        <input type="text" class="form-control" v-model="business.address">
+        <label>Address:</label>
+        <input type="text" class="form-control" v-model="business.address" />
       </div>
       <div class="form-group">
-        <label>Phone:</label> 
-        <input type="text" class="form-control" v-model="business.phone">
+        <label>Phone:</label>
+        <input type="text" class="form-control" v-model="business.phone" />
       </div>
       <div class="form-group">
-        <label>Website:</label> 
-        <input type="text" class="form-control" v-model="business.website">
+        <label>Website:</label>
+        <input type="text" class="form-control" v-model="business.website" />
       </div>
       <div class="form-group">
-        <label>Category:</label> 
-        <input type="text" class="form-control" v-model="business.category">
+        <label>Category</label>
+        <select class="form-control" v-model="business.category">
+          <option v-for="category in $parent.businessCategories">{{
+            category
+          }}</option>
+        </select>
       </div>
       <div class="form-group">
-        <label>Description:</label> 
-        <input type="text" class="form-control" v-model="business.description">
+        <label>Description:</label>
+        <input
+          type="text"
+          class="form-control"
+          v-model="business.description"
+        />
       </div>
       <div class="form-group">
         <label>Hours:</label>
-        <textarea v-model="business.hours" placeholder="M-F: 10AM-8PM"></textarea>
+        <textarea
+          v-model="business.hours"
+          placeholder="M-F: 10AM-8PM"
+        ></textarea>
       </div>
       <div class="form-group">
-        <label>Image URL:</label> 
-        <input type="text" class="form-control" v-model="business.image">
+        <label>Image URL:</label>
+        <input type="text" class="form-control" v-model="business.image" />
       </div>
-      <input type="submit" class="btn btn-primary" value="Update">
-      <input type="button" class="btn btn-primary" value="Delete" v-on:click="destroyBusiness(business)">
+      <input type="submit" class="btn btn-primary" value="Update" />
+      <input
+        type="button"
+        class="btn btn-primary"
+        value="Delete"
+        v-on:click="destroyBusiness(business)"
+      />
     </form>
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
 import axios from "axios";
 export default {
-  data: function () {
+  data: function() {
     return {
       business: [],
       errors: [],
     };
   },
-  created: function () {
+  created: function() {
     axios.get(`/api/businesses/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.business = response.data;
     });
   },
   methods: {
-    editBusiness: function (business) {
+    editBusiness: function(business) {
       var params = {
         name: business.name,
         email: business.email,
@@ -89,7 +104,7 @@ export default {
           console.log(this.errors);
         });
     },
-    destroyBusiness: function (business) {
+    destroyBusiness: function(business) {
       axios.delete(`/api/businesses/${business.id}`).then((response) => {
         console.log("Business successfully destroyed!");
         this.$router.push("/");
