@@ -3,7 +3,33 @@
     <div class="section-header section-gray">
       <div class="container">
         <h1>Businesses:</h1>
-        <div v-for="business in businesses">
+        <div class="container">
+          <!-- START - Business Gallery -->
+          <div class="row">
+            <div
+              class="col-12 col-lg-6 col-xl-4"
+              v-for="business in businesses"
+            >
+              <router-link :to="`/businesses/${business.id}`" class="demo-card">
+                <div class="demo-card-image demo-card-loading">
+                  <img
+                    :src="business.image"
+                    class="img-fluid"
+                    alt="Demo header"
+                  />
+                  <img
+                    data-src="assets/img/page_home1.png"
+                    class="img-fluid hqy-lazy"
+                    alt="Home Default"
+                  />
+                </div>
+                <h5 class="demo-card-title">{{ business.name }}</h5>
+              </router-link>
+            </div>
+          </div>
+          <!-- END - Business Gallery -->
+        </div>
+        <!-- <div v-for="business in businesses">
           <h3>{{ business.name }}</h3>
           <img :src="business.image" :alt="business.name" />
           <p>Address: {{ business.address }}</p>
@@ -11,7 +37,7 @@
           <router-link :to="`/businesses/${business.id}`"
             >More Info</router-link
           >
-        </div>
+        </div> -->
         <div id="map"></div>
       </div>
     </div>
