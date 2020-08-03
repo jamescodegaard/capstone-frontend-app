@@ -1,14 +1,20 @@
 <template>
   <div class="businesses-index">
-    <h1>Businesses:</h1>
-    <div v-for="business in businesses">
-      <h3>{{ business.name }}</h3>
-      <img :src="business.image" :alt="business.name" />
-      <p>Address: {{ business.address }}</p>
-      <p>Phone: {{ business.phone }}</p>
-      <router-link :to="`/businesses/${business.id}`">More Info</router-link>
+    <div class="section-header section-gray">
+      <div class="container">
+        <h1>Businesses:</h1>
+        <div v-for="business in businesses">
+          <h3>{{ business.name }}</h3>
+          <img :src="business.image" :alt="business.name" />
+          <p>Address: {{ business.address }}</p>
+          <p>Phone: {{ business.phone }}</p>
+          <router-link :to="`/businesses/${business.id}`"
+            >More Info</router-link
+          >
+        </div>
+        <div id="map"></div>
+      </div>
     </div>
-    <div id="map"></div>
   </div>
 </template>
 
