@@ -40,11 +40,14 @@
       <div class="form-group">
         <label>Category</label>
         <select class="form-control" v-model="category">
-          <option>Restaurant</option>
+          <option v-for="category in $parent.businessCategories">{{
+            category
+          }}</option>
+          <!-- <option>Restaurant</option>
           <option>Bar</option>
           <option>Coffee Shop</option>
           <option>Brewery</option>
-          <option>Winery</option>
+          <option>Winery</option> -->
         </select>
       </div>
       <div class="form-group">

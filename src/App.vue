@@ -71,7 +71,15 @@
 <script>
 export default {
   data: function() {
-    return {};
+    return {
+      businessCategories: [
+        "Restaurant",
+        "Bar",
+        "Coffee Shop",
+        "Brewery",
+        "Winery",
+      ],
+    };
   },
   created: function() {},
   methods: {
