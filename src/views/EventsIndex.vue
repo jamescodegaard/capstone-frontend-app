@@ -1,15 +1,13 @@
 <template>
   <div class="events-index">
-    
     <div class="form-group">
-      <input class="form-control" type="text" v-model="eventFilter">
+      <input class="form-control" type="text" v-model="eventFilter" />
     </div>
-
 
     <h1>Events:</h1>
     <div v-for="event in filterBy(events, eventFilter)">
       <h3>{{ event.name }}</h3>
-      <img :src="event.image" :alt="event.name">
+      <img :src="event.image" :alt="event.name" />
       <p>{{ event.formatted_date }} | {{ event.formatted_time }}</p>
       <p>Description: {{ event.description }}</p>
       <router-link :to="`/events/${event.id}`">More Info</router-link>
@@ -33,19 +31,19 @@ import axios from "axios";
 import Vue2Filters from "vue2-filters";
 export default {
   mixins: [Vue2Filters.mixin],
-  data: function () {
+  data: function() {
     return {
       events: [],
       eventFilter: "",
     };
   },
-  created: function () {
+  created: function() {
     axios.get("/api/events").then((response) => {
       console.log(response.data);
       this.events = response.data;
     });
   },
-  mounted: function () {
+  mounted: function() {
     mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_WEB_TOKEN;
     var map = new mapboxgl.Map({
       container: "map", // container id
@@ -55,7 +53,10 @@ export default {
     });
     map.on("load", () => {
       this.events.forEach((event) => {
-        var popup = new mapboxgl.Popup({ offset: 25 }).setText(event.name);
+        var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+          `<p>${event.name}</p>
+          <small>${event.business.name}: ${event.business.address}</small>`
+        );
         var marker = new mapboxgl.Marker()
           .setLngLat([event.business.longitude, event.business.latitude])
           .setPopup(popup)
