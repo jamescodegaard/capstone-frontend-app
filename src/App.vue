@@ -76,6 +76,7 @@ export default {
     };
   },
   created: function () {},
+  mounted: function () {},
   methods: {
     isLoggedIn: function () {
       return localStorage.getItem("jwt");

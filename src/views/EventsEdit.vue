@@ -6,68 +6,73 @@
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
       </ul>
       <div class="form-group">
-        <label>Name:</label> 
-        <input type="text" class="form-control" v-model="event.name">
+        <label>Name:</label>
+        <input type="text" class="form-control" v-model="event.name" />
       </div>
       <div class="form-group">
-        <label>Date:</label> 
-        <datetime 
-          type="datetime" 
+        <label>Date:</label>
+        <datetime
+          type="datetime"
           v-model="datetime"
           input="datetime"
-          value-zone="UTC"
-          zone="local"
-          :format="{ 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric', 
-          hour: 'numeric', 
-          minute: '2-digit', 
-          timeZoneName: 'short' 
+          value-zone="local"
+          zone="UTC"
+          :format="{
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            timeZoneName: 'short',
           }"
-          :phrases="{ok: 'Continue', cancel: 'Exit'}"
+          :phrases="{ ok: 'Continue', cancel: 'Exit' }"
           :hour-step="1"
           :minute-step="15"
           :week-start="7"
           use12-hour
           auto
-          >
+        >
         </datetime>
       </div>
       <div class="form-group">
-        <label>Description:</label> 
-        <input type="text" class="form-control" v-model="event.description">
+        <label>Description:</label>
+        <input type="text" class="form-control" v-model="event.description" />
       </div>
       <div class="form-group">
-        <label>Contact Person:</label> 
-        <input type="text" class="form-control" v-model="event.alt_contact">
+        <label>Contact Person:</label>
+        <input type="text" class="form-control" v-model="event.alt_contact" />
       </div>
       <div class="form-group">
-        <label>Email:</label> 
-        <input type="text" class="form-control" v-model="event.alt_email">
+        <label>Email:</label>
+        <input type="text" class="form-control" v-model="event.alt_email" />
       </div>
       <div class="form-group">
-        <label>Image URL:</label> 
-        <input type="text" class="form-control" v-model="event.image">
+        <label>Image URL:</label>
+        <input type="text" class="form-control" v-model="event.image" />
       </div>
       <div class="form-group">
         <div v-for="tag in tagsIndex">
-          <input type="checkbox" :value="tag.id" v-model="checkedTagIds">
+          <input type="checkbox" :value="tag.id" v-model="checkedTagIds" />
           <label :for="tag.id">#{{ tag.name }}</label>
         </div>
       </div>
-      
-      <input type="submit" class="btn btn-primary" value="Update">
-      <input type="button" class="btn btn-primary" value="Delete" v-on:click="destroyEvent(event)">
+
+      <input type="submit" class="btn btn-primary" value="Update" />
+      <input
+        type="button"
+        class="btn btn-primary"
+        value="Delete"
+        v-on:click="destroyEvent(event)"
+      />
     </form>
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
 import axios from "axios";
+import moment from "moment";
 // import Vue from "vue";
 // import { Datetime } from "vue-datetime";
 // // You need a specific loader for CSS files
@@ -76,7 +81,7 @@ import axios from "axios";
 // Vue.component("datetime", Datetime);
 
 export default {
-  data: function () {
+  data: function() {
     return {
       event: [],
       errors: [],
@@ -85,7 +90,7 @@ export default {
       datetime: "",
     };
   },
-  created: function () {
+  created: function() {
     axios.get(`/api/events/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.event = response.data;
@@ -98,10 +103,10 @@ export default {
     });
   },
   methods: {
-    editEvent: function (event) {
+    editEvent: function(event) {
       var params = {
         name: event.name,
-        date: this.datetime,
+        date: moment(this.datetime).format(),
         alt_contact: event.alt_contact,
         alt_email: event.alt_email,
         description: event.description,
@@ -119,7 +124,7 @@ export default {
           console.log(this.errors);
         });
     },
-    destroyEvent: function (event) {
+    destroyEvent: function(event) {
       axios.delete(`/api/events/${event.id}`).then((response) => {
         console.log("Event successfully destroyed!");
         this.$router.push("/");

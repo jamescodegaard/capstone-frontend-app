@@ -1,14 +1,14 @@
 <template>
   <div class="signup">
-    <div class="register-3">
+    <div class="register">
       <div class="container-fluid padding-clear">
-        <div class="register-bg2"></div>
+        <div class="register-bg"></div>
 
           <div class="register-content">
             <h1 class="text-center margin-bottom-25">
-                <a href="index.html" class="logo">
+                <!-- <a href="index.html" class="logo">
                     <img src="img/themes/logo-orange.png" alt="Logo" />
-                </a>
+                </a> -->
             </h1>
 
             <p class="register-slogan text-center">Register Your Business</p>
