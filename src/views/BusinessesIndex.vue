@@ -6,11 +6,25 @@
         <div class="container">
           <!-- START - Business Gallery -->
           <div class="row">
-            <div
-              class="col-12 col-lg-6 col-xl-4"
-              v-for="business in businesses"
-            >
-              <router-link :to="`/businesses/${business.id}`" class="demo-card">
+            <div class="col-12 col-lg-6 col-xl-4" v-for="business in businesses">
+              <div class="thumbnail team-wrapp">
+                <div class="img-wrapper">
+                  <div class="img-caption ecadaZoomIn">
+                    <div class="team-network">
+                      <a href="#"><i class="fa fa-facebook"></i></a>
+                      <a href="#"><i class="fa fa-twitter"></i></a>
+                      <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <img :src="business.image" class="img-responsive" alt="" />
+                </div>
+                <div class="caption">
+                  <h5>{{ business.name }}</h5>
+                </div>
+              </div>
+            </div>
+            
+              <!-- <router-link :to="`/businesses/${business.id}`" class="demo-card">
                 <div class="demo-card-image demo-card-loading">
                   <img
                     :src="business.image"
@@ -24,20 +38,10 @@
                   />
                 </div>
                 <h5 class="demo-card-title">{{ business.name }}</h5>
-              </router-link>
+              </router-link> -->
             </div>
           </div>
-          <!-- END - Business Gallery -->
         </div>
-        <!-- <div v-for="business in businesses">
-          <h3>{{ business.name }}</h3>
-          <img :src="business.image" :alt="business.name" />
-          <p>Address: {{ business.address }}</p>
-          <p>Phone: {{ business.phone }}</p>
-          <router-link :to="`/businesses/${business.id}`"
-            >More Info</router-link
-          >
-        </div> -->
         <div id="map"></div>
       </div>
     </div>
@@ -56,18 +60,18 @@
 <script>
 import axios from "axios";
 export default {
-  data: function() {
+  data: function () {
     return {
       businesses: [],
     };
   },
-  created: function() {
+  created: function () {
     axios.get("/api/businesses").then((response) => {
       console.log(response.data);
       this.businesses = response.data;
     });
   },
-  mounted: function() {
+  mounted: function () {
     mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_WEB_TOKEN;
     var map = new mapboxgl.Map({
       container: "map", // container id
