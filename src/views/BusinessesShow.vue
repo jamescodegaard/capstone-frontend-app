@@ -22,7 +22,7 @@
       <div class="half-column-row">
         <div class="half-column-wrapp">
           <div class="half-column">
-            <img :src="business.image" class="img-fluid" :alt="business.name" />
+            <img :src="business.image" class="img-rounded" :alt="business.name" />
           </div>
           <div class="half-column column-content">
             <h3>{{ business.name }}</h3>
@@ -42,7 +42,7 @@
     <div class="contain-wrapp padding-bottom-30">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-12">
             <div class="section-heading">
               <h3>Events</h3>
               <i class="fa fa-trophy"></i>
@@ -63,7 +63,7 @@
                       <p>More Info</p>
                     </div>
                   </div>
-                  <img :src="event.image" class="img-fluid" alt="" />
+                  <img :src="event.image" class="img-fluid img-rounded" alt="" />
                 </div>
                 <div class="caption">
                   <h5>{{ event.name }}</h5>

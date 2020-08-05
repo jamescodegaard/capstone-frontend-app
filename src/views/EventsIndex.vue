@@ -1,18 +1,39 @@
 <template>
   <div class="events-index">
-    <div class="form-group">
-      <input class="form-control" type="text" v-model="eventFilter" />
+    <div class="contain-wrapp">
+      <div class="container">
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="Search Events" v-model="eventFilter" />
+        </div>
+        <h1>Events:</h1>
+        <!-- START - Events Gallery -->
+        <div class="row">
+          <div class="col-12 col-lg-4 col-xl-6" v-for="event in filterBy(events, eventFilter)">
+            <div class="thumbnail team-wrapp">
+              <div class="img-wrapper">
+                <div class="img-caption ecadaZoomIn">
+                  <div class="team-network">
+                    <router-link :to="`/events/${event.id}`"
+                      ><i class="fa fa-arrow-right"></i
+                    ></router-link>
+                    <p>More Info</p>
+                  </div>
+                </div>
+                <img :src="event.image" class="img-fluid" alt="" />
+              </div>
+              <div class="caption">
+                <h5>{{ event.name }}</h5>
+                <span class="team-position"
+                  >{{ event.formatted_date }} |
+                  {{ event.formatted_time }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="map"></div>
+      </div>
     </div>
-
-    <h1>Events:</h1>
-    <div v-for="event in filterBy(events, eventFilter)">
-      <h3>{{ event.name }}</h3>
-      <img :src="event.image" :alt="event.name" />
-      <p>{{ event.formatted_date }} | {{ event.formatted_time }}</p>
-      <p>Description: {{ event.description }}</p>
-      <router-link :to="`/events/${event.id}`">More Info</router-link>
-    </div>
-    <div id="map"></div>
   </div>
 </template>
 
@@ -31,19 +52,19 @@ import axios from "axios";
 import Vue2Filters from "vue2-filters";
 export default {
   mixins: [Vue2Filters.mixin],
-  data: function() {
+  data: function () {
     return {
       events: [],
       eventFilter: "",
     };
   },
-  created: function() {
+  created: function () {
     axios.get("/api/events").then((response) => {
       console.log(response.data);
       this.events = response.data;
     });
   },
-  mounted: function() {
+  mounted: function () {
     mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_WEB_TOKEN;
     var map = new mapboxgl.Map({
       container: "map", // container id

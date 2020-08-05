@@ -4,7 +4,7 @@
     <div class="toparea animated">
       <div class="container">
         <div class="row">
-          <div class="col-12 col-lg-6">
+          <!-- <div class="col-12 col-lg-6"> -->
             <!-- <div class="toparea-details">
               <div class="toparea-item">
                 <i class="fa fa-envelope mr-2"></i>support@ecada.com
@@ -13,14 +13,8 @@
                 <i class="fa fa-phone mr-2"></i>(0123)-123-456-789
               </div>
             </div> -->
-          </div>
-          <div class="col-12 col-lg-6 text-lg-right">
-            <div class="toparea-details toparea-social">
-              <a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-              <a href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
-              <a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-              <a href="javascript:void(0);"><i class="fa fa-instagram"></i></a>
-            </div>
+          <!-- </div> -->
+          <div class="col-12 pull-right">
             <div class="toparea-details">
               <div class="toparea-item">
                   <router-link v-if="!isLoggedIn()" to="/login"
