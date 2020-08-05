@@ -1,81 +1,92 @@
 <template>
   <div class="signup">
-    <div class="register">
+    <div class="register-3">
       <div class="container-fluid padding-clear">
-        <div class="register-bg"></div>
+        <div class="register-bg2"></div>
 
-          <div class="register-content">
-            <h1 class="text-center margin-bottom-25">
-                <!-- <a href="index.html" class="logo">
+        <div class="register-content">
+          <h1 class="text-center margin-bottom-25">
+            <!-- <a href="index.html" class="logo">
                     <img src="img/themes/logo-orange.png" alt="Logo" />
                 </a> -->
-            </h1>
+          </h1>
 
-            <p class="register-slogan text-center">Register Your Business</p>
-            <form v-on:submit.prevent="submit()">
-                <ul>
-                  <li class="text-danger" v-for="error in errors">{{ error }}</li>
-                </ul>
-                <div class="form-group">
-                  <label>Name:</label>
-                  <input type="text" class="form-control" v-model="name" />
-                </div>
-                <div class="form-group">
-                  <label>Email:</label>
-                  <input type="email" class="form-control" v-model="email" />
-                </div>
-                <div class="form-group">
-                  <label>Password:</label>
-                  <input type="password" class="form-control" v-model="password" />
-                </div>
-                <div class="form-group">
-                  <label>Password confirmation:</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    v-model="passwordConfirmation"
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Address:</label>
-                  <input type="text" class="form-control" v-model="address" />
-                </div>
-                <div class="form-group">
-                  <label>Phone:</label>
-                  <input type="text" class="form-control" v-model="phone" />
-                </div>
-                <div class="form-group">
-                  <label>Website:</label>
-                  <input type="text" class="form-control" v-model="website" />
-                </div>
-                <div class="form-group">
-                  <label>Category</label>
-                  <select class="form-control" v-model="category">
-                    <option v-for="category in $parent.businessCategories">{{
-                      category
-                    }}</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Description:</label>
-                  <input type="text" class="form-control" v-model="description" />
-                </div>
-                <div class="form-group">
-                  <label>Hours:</label>
-                  <textarea v-model="hours" placeholder="M-F: 10AM-8PM"></textarea>
-                </div>
-                <div class="form-group">
-                  <label>Image URL:</label>
-                  <input type="text" class="form-control" v-model="image" />
-                </div>
-
-                <button class="btn-e btn-e-primary pull-right" type="submit">Sign Up</button>
-                <div class="clearfix"></div>
-            </form>
-
-            <div class="text-center">
-              <p class="margin-top-15 mb-3"><a target="_self" href="javascript:void(0);">Already have account ?</a></p>
+          <p class="register-slogan text-center">Register Your Business</p>
+          <form v-on:submit.prevent="submit()">
+            <ul>
+              <li class="text-danger" v-for="error in errors">{{ error }}</li>
+            </ul>
+            <div class="form-group">
+              <label>Name:</label>
+              <input type="text" class="form-control" v-model="name" />
             </div>
+            <div class="form-group">
+              <label>Email:</label>
+              <input type="email" class="form-control" v-model="email" />
+            </div>
+            <div class="form-group">
+              <label>Password:</label>
+              <input type="password" class="form-control" v-model="password" />
+            </div>
+            <div class="form-group">
+              <label>Password Confirmation:</label>
+              <input
+                type="password"
+                class="form-control"
+                v-model="passwordConfirmation"
+              />
+            </div>
+            <div class="form-group">
+              <label>Address:</label>
+              <input type="text" class="form-control" v-model="address" />
+            </div>
+            <div class="form-group">
+              <label>Phone:</label>
+              <input type="text" class="form-control" v-model="phone" />
+            </div>
+            <div class="form-group">
+              <label>Website:</label>
+              <input type="text" class="form-control" v-model="website" />
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select class="form-control" v-model="category">
+                <option v-for="category in $parent.businessCategories">{{
+                  category
+                }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Description:</label>
+              <input type="text" class="form-control" v-model="description" />
+            </div>
+            <div class="form-group">
+              <label>Hours:</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="hours"
+                placeholder="M-F: 10AM-8PM"
+              />
+            </div>
+            <div class="form-group">
+              <label>Image URL:</label>
+              <input type="text" class="form-control" v-model="image" />
+            </div>
+
+            <button class="btn-e btn-e-primary pull-right" type="submit">
+              Sign Up
+            </button>
+            <div class="clearfix"></div>
+          </form>
+
+          <div class="text-center">
+            <p class="margin-top-15 mb-3">
+              <a target="_self" href="javascript:void(0);"
+                >Already have account ?</a
+              >
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -145,7 +156,7 @@
 import axios from "axios";
 
 export default {
-  data: function () {
+  data: function() {
     return {
       name: "",
       email: "",
@@ -162,7 +173,7 @@ export default {
     };
   },
   methods: {
-    submit: function () {
+    submit: function() {
       var params = {
         name: this.name,
         email: this.email,
