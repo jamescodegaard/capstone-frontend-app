@@ -1,37 +1,44 @@
 <template>
   <div id="app">
-    <!-- START - Toparea -->
-    <div class="toparea animated">
-      <div class="container">
-        <div class="row">
-          <!-- <div class="col-12 col-lg-6"> -->
-            <!-- <div class="toparea-details">
-              <div class="toparea-item">
-                <i class="fa fa-envelope mr-2"></i>support@ecada.com
-              </div>
-              <div class="toparea-item">
-                <i class="fa fa-phone mr-2"></i>(0123)-123-456-789
-              </div>
-            </div> -->
-          <!-- </div> -->
-          <div class="col-12 pull-right">
-            <div class="toparea-details">
-              <div class="toparea-item">
-                  <router-link v-if="!isLoggedIn()" to="/login"
-                    >Login</router-link
-                  >
-                  <router-link v-if="isLoggedIn()" to="/logout"
-                    >Logout</router-link
-                  >
+    <body>
+      <!-- START - Toparea -->
+      <div class="toparea animated">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <!-- <div class="toparea-details">
+                <div class="toparea-item">
+                  <i class="fa fa-envelope mr-2"></i>support@ecada.com
+                </div>
+                <div class="toparea-item">
+                  <i class="fa fa-phone mr-2"></i>(0123)-123-456-789
+                </div>
+              </div> -->
+            </div>
+            <div class="col-12 pull-right">
+              <div class="toparea-details">
+                <div class="toparea-item" v-if="!isLoggedIn()">
+                    <router-link to="/login"
+                      >Login</router-link
+                    >
+                </div>
+                <div class="toparea-item" v-if="!isLoggedIn()">
+                    <router-link to="/signup"
+                      >Signup</router-link
+                    >
+                </div>
+                <div class="toparea-item" v-if="isLoggedIn()">
+                    <router-link to="/logout"
+                      >Logout</router-link
+                    >
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- END - Toparea -->
-    <body>
-      <nav class="navbar navbar-dark navbar-expand-lg megamenu">
+      <!-- END - Toparea -->
+      <nav class="navbar navbar-expand-lg navbar-dark megamenu">
         <div class="container">
           <button
             class="navbar-toggler"
@@ -54,26 +61,21 @@
 
           <!-- START - Navbar Menu -->
           <div id="navbar-menu" class="collapse navbar-collapse">
-              <ul class="nav navbar-nav ml-auto">
-                <li>
-                  <router-link to="/businesses">Businesses</router-link>
-                </li>
-                <li>
-                  <router-link to="/events">Events</router-link>
-                </li>
-                <li>
-                  <router-link
-                    v-if="isLoggedIn()"
-                    :to="`/businesses/${getBusinessId()}`"
-                    >My Info</router-link
-                  >
-                </li>
-                <li>
-                  <router-link v-if="!isLoggedIn()" to="/signup"
-                    >Signup</router-link
-                  >
-                </li>
-              </ul>
+            <ul class="nav navbar-nav ml-auto">
+              <li>
+                <router-link
+                  v-if="isLoggedIn()"
+                  :to="`/businesses/${getBusinessId()}`"
+                  >My Info</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/businesses">Businesses</router-link>
+              </li>
+              <li>
+                <router-link to="/events">Events</router-link>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
