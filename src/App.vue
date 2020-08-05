@@ -22,33 +22,13 @@
               <a href="javascript:void(0);"><i class="fa fa-instagram"></i></a>
             </div>
             <div class="toparea-details">
-              <div class="toparea-item dropdown">
-                <a
-                  href="javascript:void(0);"
-                  id="topareaLanguage"
-                  class="dropdown-toggle"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  ><i class="fa fa-globe mr-2"></i>Languages</a
-                >
-                <div class="dropdown-menu" aria-labelledby="topareaLanguage">
-                  <a href="javascript:void(0);" class="dropdown-item"
-                    >English<i class="fa fa-check ml-2"></i
-                  ></a>
-                  <a href="javascript:void(0);" class="dropdown-item"
-                    >Spanish</a
-                  >
-                  <a href="javascript:void(0);" class="dropdown-item"
-                    >Russian</a
-                  >
-                  <a href="javascript:void(0);" class="dropdown-item">German</a>
-                </div>
-              </div>
-              <div class="toparea-item"><a href="page_faq.html">Help</a></div>
               <div class="toparea-item">
-                <a href="page_login.html">Login</a>
+                  <router-link v-if="!isLoggedIn()" to="/login"
+                    >Login</router-link
+                  >
+                  <router-link v-if="isLoggedIn()" to="/logout"
+                    >Logout</router-link
+                  >
               </div>
             </div>
           </div>
@@ -57,7 +37,7 @@
     </div>
     <!-- END - Toparea -->
     <body>
-      <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+      <nav class="navbar navbar-dark navbar-expand-lg megamenu">
         <div class="container">
           <button
             class="navbar-toggler"
@@ -70,39 +50,36 @@
           >
             <i class="fa fa-bars"></i>
           </button>
+           <!-- START - Navbar Brand -->
+          <div class="navbar-header">
+              <!-- <a class="navbar-brand logo" href="index.html">
+                  <img src="img/themes/logo-orange.png" alt="Logo" />
+              </a> -->
+          </div>
+          <!-- END - Navbar Brand -->
+
+          <!-- START - Navbar Menu -->
           <div id="navbar-menu" class="collapse navbar-collapse">
-            <div id="navbar" class="collapse navbar-collapse">
               <ul class="nav navbar-nav ml-auto">
-                <li class="tab-nav">
+                <li>
                   <router-link to="/businesses">Businesses</router-link>
                 </li>
-                <li class="tab-nav">
+                <li>
                   <router-link to="/events">Events</router-link>
                 </li>
-                <li class="tab-nav">
+                <li>
                   <router-link
                     v-if="isLoggedIn()"
                     :to="`/businesses/${getBusinessId()}`"
                     >My Info</router-link
                   >
                 </li>
-                <li class="tab-nav">
+                <li>
                   <router-link v-if="!isLoggedIn()" to="/signup"
                     >Signup</router-link
                   >
                 </li>
-                <li class="tab-nav">
-                  <router-link v-if="!isLoggedIn()" to="/login"
-                    >Login</router-link
-                  >
-                </li>
-                <li class="tab-nav">
-                  <router-link v-if="isLoggedIn()" to="/logout"
-                    >Logout</router-link
-                  >
-                </li>
               </ul>
-            </div>
           </div>
         </div>
       </nav>
@@ -132,7 +109,7 @@
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       businessCategories: [
         "Restaurant",
@@ -143,13 +120,13 @@ export default {
       ],
     };
   },
-  created: function() {},
-  mounted: function() {},
+  created: function () {},
+  mounted: function () {},
   methods: {
-    isLoggedIn: function() {
+    isLoggedIn: function () {
       return localStorage.getItem("jwt");
     },
-    getBusinessId: function() {
+    getBusinessId: function () {
       return localStorage.getItem("business_id");
     },
   },
