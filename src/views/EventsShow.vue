@@ -2,18 +2,10 @@
   <div class="events-show">
     <div class="inner-head">
       <div class="container">
-          <div class="row">
-              <!-- <div class="col-12">
-                  <i class="fa fa-users"></i>
-                  <h4>Theme <span>Pages</span></h4>
-                  <ol class="breadcrumb">
-                      <li><a href="javascript:void(0);">Pages</a></li>
-                      <li class="active">About Us 3</li>
-                  </ol>
-              </div> -->
-          </div>
+        <div class="row">
+        </div>
       </div>
-  </div>
+    </div>
   <!-- END - Inner Head -->
     <!-- START - Half Contain Wrapp -->
     <div class="container-fluid">

@@ -39,6 +39,9 @@
       </div>
       <!-- END - Toparea -->
       <nav v-if="$route.path!=`/signup`" class="navbar navbar-expand-lg navbar-dark megamenu">
+        <div class="navbar-header">
+          <h2><router-link to="/businesses">DecorahDoings</router-link></h2>
+        </div>
         <div class="container">
           <button
             class="navbar-toggler"
@@ -108,11 +111,13 @@ export default {
   data: function () {
     return {
       businessCategories: [
-        "Restaurant",
         "Bar",
-        "Coffee Shop",
         "Brewery",
+        "Coffee Shop",
+        "Music Venue",
+        "Restaurant",
         "Winery",
+        "Other",
       ],
     };
   },

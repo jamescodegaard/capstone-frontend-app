@@ -1,8 +1,14 @@
 <template>
   <div class="businesses-index">
+    <div class="inner-head">
+      <div class="container">
+        <div class="row">
+        </div>
+      </div>
+    </div>
     <div class="contain-wrapp">
       <div class="container">
-        <h1>Businesses:</h1>
+        <h1>Local Businesses:</h1>
         <!-- START - Business Gallery -->
         <div class="row">
           <div class="col-12 col-lg-4 col-xl-6" v-for="business in businesses">

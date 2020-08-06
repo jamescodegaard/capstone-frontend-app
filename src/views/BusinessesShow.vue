@@ -45,16 +45,16 @@
         <div class="row justify-content-center">
           <div class="col-12 col-md-12">
             <div class="section-heading">
-              <h3>Events</h3>
+              <h3>Events at {{business.name}}</h3>
               <i class="fa fa-trophy"></i>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-12 col-lg-3 col-xl-6" v-for="event in events">
+          <div class="col-12 col-sm-4" v-for="event in events">
             <!-- <div id="team" class="owl-carousel leftControls-right"> -->
             <div class="item">
-              <div class="thumbnail team-wrapp">
+              <div class="thumbnail team-wrapp thumbnail-green">
                 <div class="img-wrapper">
                   <div class="img-caption ecadaZoomIn">
                     <div class="team-network">
@@ -64,7 +64,7 @@
                       <p>More Info</p>
                     </div>
                   </div>
-                  <img :src="event.image" class="img-fluid img-rounded" alt="" />
+                  <img :src="event.image" class="img-containt img-fluid" alt="" />
                 </div>
                 <div class="caption">
                   <h5>{{ event.name }}</h5>

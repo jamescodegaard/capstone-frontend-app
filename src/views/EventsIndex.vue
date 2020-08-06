@@ -1,11 +1,17 @@
 <template>
   <div class="events-index">
+    <div class="inner-head">
+      <div class="container">
+        <div class="row">
+        </div>
+      </div>
+    </div>
     <div class="contain-wrapp">
       <div class="container">
+        <h1>Local Events:</h1>
         <div class="form-group">
           <input class="form-control" type="text" placeholder="Search Events" v-model="eventFilter" />
         </div>
-        <h1>Events:</h1>
         <!-- START - Events Gallery -->
         <div class="row">
           <div class="col-12 col-lg-4 col-xl-6" v-for="event in filterBy(events, eventFilter)">
