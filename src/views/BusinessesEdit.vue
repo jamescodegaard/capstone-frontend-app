@@ -1,65 +1,117 @@
 <template>
   <div class="businesses-edit">
-    <form v-on:submit.prevent="editBusiness(business)">
-      <h2>Update {{ business.name }}</h2>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Name:</label>
-        <input type="text" class="form-control" v-model="business.name" />
-      </div>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="email" class="form-control" v-model="business.email" />
-      </div>
-      <div class="form-group">
-        <label>Address:</label>
-        <input type="text" class="form-control" v-model="business.address" />
-      </div>
-      <div class="form-group">
-        <label>Phone:</label>
-        <input type="text" class="form-control" v-model="business.phone" />
-      </div>
-      <div class="form-group">
-        <label>Website:</label>
-        <input type="text" class="form-control" v-model="business.website" />
-      </div>
-      <div class="form-group">
-        <label>Category</label>
-        <select class="form-control" v-model="business.category">
-          <option v-for="category in $parent.businessCategories">{{
-            category
-          }}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Description:</label>
-        <input
-          type="text"
-          class="form-control"
-          v-model="business.description"
-        />
-      </div>
-      <div class="form-group">
-        <label>Hours:</label>
-        <textarea
-          v-model="business.hours"
-          placeholder="M-F: 10AM-8PM"
-        ></textarea>
-      </div>
-      <div class="form-group">
-        <label>Image URL:</label>
-        <input type="text" class="form-control" v-model="business.image" />
-      </div>
-      <input type="submit" class="btn btn-primary" value="Update" />
-      <input
-        type="button"
-        class="btn btn-primary"
-        value="Delete"
-        v-on:click="destroyBusiness(business)"
-      />
-    </form>
+    <div class="contain-wrapp">
+        <div class="parallax bg-decorah">
+          <div class="parallax-container padding-clear">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                  <div class="form-wrapper dark-bg">
+                    <form v-on:submit.prevent="editBusiness(business)">
+                      <h2>Update Info</h2>
+                      <ul>
+                        <li class="text-danger" v-for="error in errors">
+                          {{ error }}
+                        </li>
+                      </ul>
+                      <div class="wrap-form">
+                        <div class="form-group">
+                          <label>Name:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            v-model="business.name"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>Email:</label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            v-model="business.email"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>Address:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            v-model="business.address"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>Phone:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            v-model="business.phone"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>Website:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            v-model="business.website"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>Category</label>
+                          <select
+                            class="form-control"
+                            v-model="business.category"
+                          >
+                            <option
+                              v-for="category in $parent.businessCategories"
+                              >{{ category }}</option
+                            >
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Description:</label>
+                          <textarea
+                            class="form-control"
+                            rows="3"
+                            v-model="business.description"
+                          ></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label>Hours:</label>
+                          <textarea
+                            class="form-control"
+                            rows="3"
+                            v-model="business.hours"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Image URL:</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          v-model="business.image"
+                        />
+                      </div>
+                      <input
+                        type="submit"
+                        class="btn btn-e-primary"
+                        value="Update"
+                      />
+                      <input
+                        type="button"
+                        class="btn btn-e-dark-red pull-right"
+                        value="Delete"
+                        v-on:click="destroyBusiness(business)"
+                      />
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    </div>
   </div>
 </template>
 
@@ -68,20 +120,20 @@
 <script>
 import axios from "axios";
 export default {
-  data: function() {
+  data: function () {
     return {
       business: [],
       errors: [],
     };
   },
-  created: function() {
+  created: function () {
     axios.get(`/api/businesses/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.business = response.data;
     });
   },
   methods: {
-    editBusiness: function(business) {
+    editBusiness: function (business) {
       var params = {
         name: business.name,
         email: business.email,
@@ -104,7 +156,7 @@ export default {
           console.log(this.errors);
         });
     },
-    destroyBusiness: function(business) {
+    destroyBusiness: function (business) {
       axios.delete(`/api/businesses/${business.id}`).then((response) => {
         console.log("Business successfully destroyed!");
         this.$router.push("/");

@@ -66,7 +66,7 @@
                 <router-link
                   v-if="isLoggedIn()"
                   :to="`/businesses/${getBusinessId()}`"
-                  >My Info</router-link
+                  >My Business</router-link
                 >
               </li>
               <li>

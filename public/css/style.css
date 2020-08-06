@@ -432,8 +432,8 @@ iframe {
   background: url(../img/clients_bg.png) 100% 0 repeat fixed;
   background-size: cover;
 }
-.parallax.bg-restaurant {
-  background: url(../img/restaurant/restaurant_bg.jpg) 100% 0 repeat fixed;
+.parallax.bg-decorah {
+  background: url(../img/decorah/siewers-spring.jpg) 100% 0 repeat fixed;
   background-size: cover;
 }
 .parallax-container {
@@ -450,7 +450,7 @@ iframe {
 */
 .inner-head {
   color: #fff;
-  background: url(../img/innerhead.jpg) center no-repeat;
+  background: url(../img/decorah/siewers-spring.jpg) center no-repeat;
   padding: 60px 0;
   position: relative;
   z-index: 1;
