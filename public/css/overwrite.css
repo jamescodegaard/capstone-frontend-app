@@ -3611,7 +3611,7 @@ textares.input-xs {
 }
 .login-bg,
 .register-bg {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
@@ -3620,7 +3620,7 @@ textares.input-xs {
 }
 .login-bg2,
 .register-bg2 {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
@@ -3642,16 +3642,27 @@ textares.input-xs {
   padding: 45px;
   background-color: #fff;
 }
-.login-3 .login-content,
 .register-3 .register-content {
+  position: sticky;
   position: absolute;
   top: 50%;
   left: 50%;
   max-width: 500px;
   width: 100%;
   padding: 45px;
-  background-color: #fff;
-  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.849);
+  transform: translate(-50%, -25%);
+}
+.login-3 .login-content {
+  position: sticky;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  max-width: 500px;
+  width: 100%;
+  padding: 45px;
+  background-color: rgba(255, 255, 255, 0.849);
+  transform: translate(-50%, -25%);
 }
 @media (max-width: 768px) {
   .login-2 .login-content,

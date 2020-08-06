@@ -62,12 +62,10 @@
             </div>
             <div class="form-group">
               <label>Hours:</label>
-              <input
-                type="text"
-                class="form-control"
+              <textarea class="form-control" rows="3"
                 v-model="hours"
                 placeholder="M-F: 10AM-8PM"
-              />
+              ></textarea>
             </div>
             <div class="form-group">
               <label>Image URL:</label>
@@ -82,10 +80,11 @@
 
           <div class="text-center">
             <p class="margin-top-15 mb-3">
-              <a target="_self" href="javascript:void(0);"
-                >Already have account ?</a
+              <router-link to="/login" href="javascript:void(0);"
+                >Already have account?</router-link
               >
             </p>
+            <small>DecorahDoings © 2020</small>
           </div>
         </div>
       </div>
@@ -156,7 +155,7 @@
 import axios from "axios";
 
 export default {
-  data: function() {
+  data: function () {
     return {
       name: "",
       email: "",
@@ -173,7 +172,7 @@ export default {
     };
   },
   methods: {
-    submit: function() {
+    submit: function () {
       var params = {
         name: this.name,
         email: this.email,

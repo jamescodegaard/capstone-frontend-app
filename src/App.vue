@@ -2,7 +2,7 @@
   <div id="app">
     <body>
       <!-- START - Toparea -->
-      <div class="toparea animated">
+      <div  v-if="$route.path!=`/signup`" class="toparea animated">
         <div class="container">
           <div class="row">
             <div class="col-12 col-lg-6">
@@ -38,7 +38,7 @@
         </div>
       </div>
       <!-- END - Toparea -->
-      <nav class="navbar navbar-expand-lg navbar-dark megamenu">
+      <nav v-if="$route.path!=`/signup`" class="navbar navbar-expand-lg navbar-dark megamenu">
         <div class="container">
           <button
             class="navbar-toggler"
