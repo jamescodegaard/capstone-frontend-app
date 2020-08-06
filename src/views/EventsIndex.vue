@@ -25,7 +25,7 @@
                     <p>More Info</p>
                   </div>
                 </div>
-                <img :src="event.image" class="img-fluid" alt="" />
+                <img :src="event.image" class="img-responsive" alt="" />
               </div>
               <div class="caption">
                 <h5>{{ event.name }}</h5>
