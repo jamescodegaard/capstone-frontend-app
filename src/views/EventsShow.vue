@@ -20,7 +20,7 @@
       <div class="half-column-row">
         <div class="half-column-wrapp">
           <div class="half-column">
-            <img :src="event.image" class="img-fluid" :alt="event.name" />
+            <img :src="event.image" class="img-thumbnail thumbnail-green" :alt="event.name" />
           </div>
           <div class="half-column column-content">
             <h3>{{ event.name }}</h3>

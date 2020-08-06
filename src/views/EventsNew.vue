@@ -1,64 +1,100 @@
 <template>
   <div class="events-edit">
-    <form v-on:submit.prevent="newEvent()">
-      <h2>New Event</h2>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Name:</label>
-        <input type="text" class="form-control" v-model="name" />
-      </div>
-      <div class="form-group">
-        <label>Date:</label>
-        <datetime
-          type="datetime"
-          v-model="date"
-          input="datetimeEmpty"
-          value-zone="local"
-          zone="UTC"
-          :format="{
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: '2-digit',
-            timeZoneName: 'short',
-          }"
-          :phrases="{ ok: 'Continue', cancel: 'Exit' }"
-          :hour-step="1"
-          :minute-step="15"
-          :week-start="7"
-          use12-hour
-          auto
-        >
-        </datetime>
-      </div>
-      <div class="form-group">
-        <label>Description:</label>
-        <input type="text" class="form-control" v-model="description" />
-      </div>
-      <div class="form-group">
-        <label>Contact Person:</label>
-        <input type="text" class="form-control" v-model="alt_contact" />
-      </div>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="text" class="form-control" v-model="alt_email" />
-      </div>
-      <div class="form-group">
-        <label>Image URL:</label>
-        <input type="text" class="form-control" v-model="image" />
-      </div>
-      <div class="form-group">
-        <div v-for="tag in tagsIndex">
-          <input type="checkbox" :value="tag.id" v-model="checkedTagIds" />
-          <label :for="tag.id">#{{ tag.name }}</label>
+    <div class="contain-wrapp">
+      <div class="parallax bg-decorah">
+        <div class="parallax-container padding-clear">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-8 col-lg-6">
+                <div class="form-wrapper dark-bg">
+                  <form v-on:submit.prevent="newEvent()">
+                    <h2>New Event</h2>
+                    <ul>
+                      <li class="text-danger" v-for="error in errors">
+                        {{ error }}
+                      </li>
+                    </ul>
+                    <div class="form-group">
+                      <label>Name:</label>
+                      <input type="text" class="form-control" v-model="name" />
+                    </div>
+                    <div class="form-group">
+                      <label>Date:</label>
+                      <datetime
+                        type="datetime"
+                        v-model="date"
+                        input="datetimeEmpty"
+                        value-zone="local"
+                        zone="UTC"
+                        :format="{
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: '2-digit',
+                          timeZoneName: 'short',
+                        }"
+                        :phrases="{ ok: 'Continue', cancel: 'Exit' }"
+                        :hour-step="1"
+                        :minute-step="15"
+                        :week-start="7"
+                        use12-hour
+                        auto
+                      >
+                      </datetime>
+                    </div>
+                    <div class="form-group">
+                      <label>Description:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="description"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Contact Person:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="alt_contact"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Email:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="alt_email"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Image URL:</label>
+                      <input type="text" class="form-control" v-model="image" />
+                    </div>
+                    <div class="form-group">
+                      <div v-for="tag in tagsIndex">
+                        <input
+                          type="checkbox"
+                          :value="tag.id"
+                          v-model="checkedTagIds"
+                        />
+                        <label :for="tag.id">#{{ tag.name }}</label>
+                      </div>
+                    </div>
+
+                    <input
+                      type="submit"
+                      class="btn btn-e-primary"
+                      value="Create Event"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <input type="submit" class="btn btn-primary" value="Create Event" />
-    </form>
+    </div>
   </div>
 </template>
 
@@ -75,7 +111,7 @@ import moment from "moment";
 // Vue.use(Datetime);
 
 export default {
-  data: function() {
+  data: function () {
     return {
       errors: [],
       tagsIndex: [],
@@ -88,14 +124,14 @@ export default {
       image: "",
     };
   },
-  created: function() {
+  created: function () {
     axios.get(`/api/tags`).then((response) => {
       console.log(response.data);
       this.tagsIndex = response.data;
     });
   },
   methods: {
-    newEvent: function() {
+    newEvent: function () {
       var params = {
         name: this.name,
         date: moment(this.date).format(),

@@ -22,16 +22,17 @@
       <div class="half-column-row">
         <div class="half-column-wrapp">
           <div class="half-column">
-            <img :src="business.image" class="img-rounded" :alt="business.name" />
+            <img :src="business.image" class="img-thumbnail thumbnail-green" :alt="business.name" />
           </div>
           <div class="half-column column-content">
             <h3>{{ business.name }}</h3>
-            <p>Description: {{ business.description }}</p>
-            <router-link
+            <p>{{ business.description }}</p>
+            <p><router-link
               v-if="$parent.getBusinessId() == business.id"
               :to="`/businesses/${this.business.id}/edit`"
               >Edit Business</router-link
-            >
+            ></p>
+            <p><router-link v-if="$parent.getBusinessId() == business.id" :to="`/events/new`">New Event</router-link></p>
           </div>
         </div>
       </div>

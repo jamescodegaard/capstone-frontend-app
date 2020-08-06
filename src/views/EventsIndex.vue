@@ -9,7 +9,7 @@
         <!-- START - Events Gallery -->
         <div class="row">
           <div class="col-12 col-lg-4 col-xl-6" v-for="event in filterBy(events, eventFilter)">
-            <div class="thumbnail team-wrapp">
+            <div class="thumbnail team-wrapp thumbnail-green">
               <div class="img-wrapper">
                 <div class="img-caption ecadaZoomIn">
                   <div class="team-network">

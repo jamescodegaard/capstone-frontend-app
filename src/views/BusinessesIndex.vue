@@ -5,8 +5,8 @@
         <h1>Businesses:</h1>
         <!-- START - Business Gallery -->
         <div class="row">
-          <div class="col-12 col-lg-6 col-xl-4" v-for="business in businesses">
-            <div class="thumbnail team-wrapp">
+          <div class="col-12 col-lg-4 col-xl-6" v-for="business in businesses">
+            <div class="thumbnail team-wrapp thumbnail-green">
               <div class="img-wrapper">
                 <div class="img-caption ecadaZoomIn">
                   <div class="team-network">
@@ -42,18 +42,18 @@
 <script>
 import axios from "axios";
 export default {
-  data: function() {
+  data: function () {
     return {
       businesses: [],
     };
   },
-  created: function() {
+  created: function () {
     axios.get("/api/businesses").then((response) => {
       console.log(response.data);
       this.businesses = response.data;
     });
   },
-  mounted: function() {
+  mounted: function () {
     mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_WEB_TOKEN;
     var map = new mapboxgl.Map({
       container: "map", // container id
