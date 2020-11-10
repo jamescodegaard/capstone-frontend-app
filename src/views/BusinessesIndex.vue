@@ -2,30 +2,36 @@
   <div class="businesses-index">
     <div class="inner-head">
       <div class="container">
-        <div class="row">
-        </div>
+        <div class="row"></div>
       </div>
     </div>
-    <div class="contain-wrapp">
+    <div class="contain-wrapp padding-clear padding-bottom-30">
       <div class="container">
         <h1>Local Businesses:</h1>
         <!-- START - Business Gallery -->
-        <div class="row">
-          <div class="col-12 col-lg-4 col-xl-6" v-for="business in businesses">
-            <div class="thumbnail team-wrapp thumbnail-green">
-              <div class="img-wrapper">
-                <div class="img-caption ecadaZoomIn">
-                  <div class="team-network">
-                    <router-link :to="`/businesses/${business.id}`"
-                      ><i class="fa fa-arrow-right"></i
-                    ></router-link>
+        <div id="gallery" class="masonry gallery">
+          <div class="row">
+            <div class="col-12">
+              <div
+                class="grid-item col-x12 col-md-4"
+                v-for="business in businesses"
+              >
+                <div class="thumbnail team-wrapp thumbnail-green">
+                  <div class="img-wrapper">
+                    <div class="img-caption ecadaZoomIn">
+                      <div class="team-network">
+                        <router-link :to="`/businesses/${business.id}`"
+                          ><i class="fa fa-arrow-right"></i
+                        ></router-link>
+                      </div>
+                    </div>
+                    <img :src="business.image" class="img-responsive" alt="" />
+                  </div>
+                  <div class="caption">
+                    <h5>{{ business.name }}</h5>
+                    <p>{{ business.phone }}</p>
                   </div>
                 </div>
-                <img :src="business.image" class="img-responsive" alt="" />
-              </div>
-              <div class="caption">
-                <h5>{{ business.name }}</h5>
-                <p>{{ business.phone }}</p>
               </div>
             </div>
           </div>
@@ -47,19 +53,20 @@
 
 <script>
 import axios from "axios";
+
 export default {
-  data: function () {
+  data: function() {
     return {
       businesses: [],
     };
   },
-  created: function () {
+  created: function() {
     axios.get("/api/businesses").then((response) => {
       console.log(response.data);
       this.businesses = response.data;
     });
   },
-  mounted: function () {
+  mounted: function() {
     mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_WEB_TOKEN;
     var map = new mapboxgl.Map({
       container: "map", // container id
@@ -82,6 +89,26 @@ export default {
           .addTo(map); // add the marker to the map
       });
     });
+    ".img-wrapper".each(function() {
+      var eZoomIn = (".ecadaZoomIn", this),
+        eZoomInDown = (".ecadaZoomInDown", this);
+      ".img-caption".addClass("animated");
+      eZoomIn.addClass("zoomOut");
+      eZoomInDown.addClass("zoomOutDown");
+      this.on("mouseenter", function() {
+        eZoomIn.addClass("zoomIn").removeClass("zoomOut");
+        eZoomInDown.addClass("zoomInDown").removeClass("zoomOutDown");
+        this.addClass("on");
+        return false;
+      });
+      this.on("mouseleave", function() {
+        eZoomIn.addClass("zoomOut").removeClass("zoomIn");
+        eZoomInDown.addClass("zoomOutDown").removeClass("zoomInDown");
+        this.removeClass("on");
+        return false;
+      });
+    });
+    //
   },
   methods: {},
 };

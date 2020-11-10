@@ -22,17 +22,29 @@
       <div class="half-column-row">
         <div class="half-column-wrapp">
           <div class="half-column">
-            <img :src="business.image" class="img-thumbnail thumbnail-green" :alt="business.name" />
+            <img
+              :src="business.image"
+              class="img-thumbnail thumbnail-green"
+              :alt="business.name"
+            />
           </div>
           <div class="half-column column-content">
             <h3>{{ business.name }}</h3>
             <p>{{ business.description }}</p>
-            <p><router-link
-              v-if="$parent.getBusinessId() == business.id"
-              :to="`/businesses/${this.business.id}/edit`"
-              >Edit Business</router-link
-            ></p>
-            <p><router-link v-if="$parent.getBusinessId() == business.id" :to="`/events/new`">New Event</router-link></p>
+            <p>
+              <router-link
+                v-if="$parent.getBusinessId() == business.id"
+                :to="`/businesses/${this.business.id}/edit`"
+                >Edit Business</router-link
+              >
+            </p>
+            <p>
+              <router-link
+                v-if="$parent.getBusinessId() == business.id"
+                :to="`/events/new`"
+                >New Event</router-link
+              >
+            </p>
           </div>
         </div>
       </div>
@@ -45,7 +57,7 @@
         <div class="row justify-content-center">
           <div class="col-12 col-md-12">
             <div class="section-heading">
-              <h3>Events at {{business.name}}</h3>
+              <h3>Events at {{ business.name }}</h3>
               <i class="fa fa-trophy"></i>
             </div>
           </div>
@@ -64,7 +76,11 @@
                       <p>More Info</p>
                     </div>
                   </div>
-                  <img :src="event.image" class="img-containt img-fluid" alt="" />
+                  <img
+                    :src="event.image"
+                    class="img-containt img-fluid"
+                    alt=""
+                  />
                 </div>
                 <div class="caption">
                   <h5>{{ event.name }}</h5>
@@ -90,9 +106,12 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <h5>Address:</h5> <p>{{ business.address }}</p>
-            <h5>Email:</h5> <p>{{ business.email }}</p>
-            <h5>Phone:</h5> <p>{{ business.phone }}</p>
+            <h5>Address:</h5>
+            <p>{{ business.address }}</p>
+            <h5>Email:</h5>
+            <p>{{ business.email }}</p>
+            <h5>Phone:</h5>
+            <p>{{ business.phone }}</p>
             <h5>Hours:</h5>
             <p>{{ business.hours }}</p>
             <a class="btn-e btn-gray btn-icon" :href="business.website"
@@ -140,18 +159,40 @@
 import axios from "axios";
 
 export default {
-  data: function () {
+  data: function() {
     return {
       business: {},
       events: [],
     };
   },
-  created: function () {
+  created: function() {
     axios.get(`/api/businesses/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.business = response.data;
       this.events = response.data.events;
     });
+  },
+  mounted: function() {
+    ".img-wrapper".each(function() {
+      var eZoomIn = (".ecadaZoomIn", this),
+        eZoomInDown = (".ecadaZoomInDown", this);
+      ".img-caption".addClass("animated");
+      eZoomIn.addClass("zoomOut");
+      eZoomInDown.addClass("zoomOutDown");
+      this.on("mouseenter", function() {
+        eZoomIn.addClass("zoomIn").removeClass("zoomOut");
+        eZoomInDown.addClass("zoomInDown").removeClass("zoomOutDown");
+        this.addClass("on");
+        return false;
+      });
+      this.on("mouseleave", function() {
+        eZoomIn.addClass("zoomOut").removeClass("zoomIn");
+        eZoomInDown.addClass("zoomOutDown").removeClass("zoomInDown");
+        this.removeClass("on");
+        return false;
+      });
+    });
+    //
   },
   methods: {},
 };

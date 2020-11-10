@@ -1,39 +1,39 @@
 /*
 MASONRY
 =========================== */
-.masonry{
-	display:block;
-	position:relative;
-    padding: 0;
+.masonry {
+  display: block;
+  position: relative;
+  padding: 0;
 }
 
-.masonry .grid-item{
-	height:auto;
-	position:relative;
-    margin-bottom: 30px;
+.masonry .grid-item {
+  height: auto;
+  position: relative;
+  margin-bottom: 30px;
 }
 
-.masonry .grid-item .icon-box{
-	margin:0;
-	border:none;
+.masonry .grid-item .icon-box {
+  margin: 0;
+  border: none;
 }
 
-.fullwidth{
-    overflow: hidden;
+.fullwidth {
+  overflow: hidden;
 }
 
-.fullwidth .masonry{
-	margin-bottom:-1px;
+.fullwidth .masonry {
+  margin-bottom: -1px;
 }
 
 @media (width: 1024px) {
-    .fullwidth .masonry{
-        border: solid 1px transparent;
-    }
-    
-    .fullwidth .masonry.box{
-        border: none;
-    }
+  .fullwidth .masonry {
+    border: solid 1px transparent;
+  }
+
+  .fullwidth .masonry.box {
+    border: none;
+  }
 }
 
 @media (min-width: 992px) {
@@ -139,52 +139,52 @@ MASONRY
 }
 
 @media (min-width: 320px) and (max-width: 640px) {
-    .grid-sizer.col-xs-12,
-    .grid-item.col-xs-12 {
-      width: 100%;
-    }
-    .grid-sizer.col-xs-11,
-    .grid-item.col-xs-11 {
-      width: 91.66666667%;
-    }
-    .grid-sizer.col-xs-10,
-    .grid-item.col-xs-10 {
-      width: 83.33333333%;
-    }
-    .grid-sizer.col-xs-9,
-    .grid-item.col-xs-9 {
-      width: 75%;
-    }
-    .grid-sizer.col-xs-8,
-    .grid-item.col-xs-8 {
-      width: 66.66666667%;
-    }
-    .grid-sizer.col-xs-7,
-    .grid-item.col-xs-7 {
-      width: 58.33333333%;
-    }
-    .grid-sizer.col-xs-6,
-    .grid-item.col-xs-6 {
-      width: 50%;
-    }
-    .grid-sizer.col-xs-5,
-    .grid-item.col-xs-5 {
-      width: 41.66666667%;
-    }
-    .grid-sizer.col-xs-4,
-    .grid-item.col-xs-4 {
-      width: 33.33333333%;
-    }
-    .grid-sizer.col-xs-3,
-    .grid-item.col-xs-3 {
-      width: 25%;
-    }
-    .grid-sizer.col-xs-2,
-    .grid-item.col-xs-2 {
-      width: 16.66666667%;
-    }
-    .grid-sizer.col-xs-1,
-    .grid-item.col-xs-1 {
-      width: 8.33333333%;
-    }
+  .grid-sizer.col-xs-12,
+  .grid-item.col-xs-12 {
+    width: 100%;
+  }
+  .grid-sizer.col-xs-11,
+  .grid-item.col-xs-11 {
+    width: 91.66666667%;
+  }
+  .grid-sizer.col-xs-10,
+  .grid-item.col-xs-10 {
+    width: 83.33333333%;
+  }
+  .grid-sizer.col-xs-9,
+  .grid-item.col-xs-9 {
+    width: 75%;
+  }
+  .grid-sizer.col-xs-8,
+  .grid-item.col-xs-8 {
+    width: 66.66666667%;
+  }
+  .grid-sizer.col-xs-7,
+  .grid-item.col-xs-7 {
+    width: 58.33333333%;
+  }
+  .grid-sizer.col-xs-6,
+  .grid-item.col-xs-6 {
+    width: 50%;
+  }
+  .grid-sizer.col-xs-5,
+  .grid-item.col-xs-5 {
+    width: 41.66666667%;
+  }
+  .grid-sizer.col-xs-4,
+  .grid-item.col-xs-4 {
+    width: 33.33333333%;
+  }
+  .grid-sizer.col-xs-3,
+  .grid-item.col-xs-3 {
+    width: 25%;
+  }
+  .grid-sizer.col-xs-2,
+  .grid-item.col-xs-2 {
+    width: 16.66666667%;
+  }
+  .grid-sizer.col-xs-1,
+  .grid-item.col-xs-1 {
+    width: 8.33333333%;
+  }
 }
